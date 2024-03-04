@@ -1,3 +1,4 @@
+#definidas funciones factorial y productoria, a traves de sentencias iterativas.
 def factorial(num):
   i=num-1
   fac=num
@@ -14,9 +15,16 @@ def productoria(lista):
  
     return prod
      
-def calcular(fact_1,prod_1,fact_2):
-    print(f"El factorial de {fact_1} es {factorial(fact_1)}")
-    print(f"La productoria de {prod_1} es {productoria(prod_1)}")
-    print(f"El factorial de {fact_2} es {factorial(fact_2)}")
-
-calcular(fact_1 = 5, prod_1 = [3,6,4,2,8], fact_2 = 6)
+#funcion calcular que desde distintos argumentos recibe en kwargs  
+def calcular(**kwargs):
+    for k,v in kwargs.items():# recorre el kwargs sobre los argumentos de palabra clave
+        if k.startswith('fact_'):# verifica si la clave comienza con 'fact_' para identificar los factoriales
+            num = v
+            print(f"El factorial de {num} es {factorial(num)}")
+        elif k.startswith('prod_'):# verifica si la clave comienza con 'prod_' para la productoria
+            lista = v
+            print(f"La productoria de {lista} es {productoria(lista)}")
+        else: 
+            print(f"No se pudo procesar el argumento: {k}")# si la clave no comienza ni con 'fact_' ni con 'prod_' imprime este texto.
+            
+calcular( prod_1 = [4,6,7,4,3],fact_1 = 5, fact_2 = 6,fact_3=10)

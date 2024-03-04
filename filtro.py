@@ -6,6 +6,7 @@ precios = {'Notebook'        : 700000,
            'Escritorio'      : 135000,
            'Tarjeta de Video': 1500000}
 
+#Funcion Filtrar. traspasa el diccionario filtrado segun el tipo de umbral, luego pasa las claves a una lista para usar join.
 def filtrar(dic,umbral,condicion):
     if condicion == "menor":
      diccionario = { k:v for k,v in dic.items() if v < umbral}
@@ -18,6 +19,8 @@ def filtrar(dic,umbral,condicion):
     else:
      print("Lo sentimos, no es una operación válida")
   
+#verificar si hay mas de dos argumentos en la línea de comandos,si hay mas de dos argumentos se asigna
+#a la variable condicion, si no encuentra argumentos luego del nombre del archivo es inmediatamente mayor.
 if len(sys.argv)>2:
     condicion = str(sys.argv[2])
 else:
